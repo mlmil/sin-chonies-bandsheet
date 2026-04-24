@@ -1,5 +1,7 @@
 # Sin Chonies Band Sheet
 
+![Sin Chonies Digital Banner](2025%20Digital%20Banner%20w_qr%20and%20logo%2016x9.png)
+
 A Python-based band scheduling system that fetches gig data from Google Calendar and generates a static HTML bandsheet. Displays upcoming performances, member availability, and free weekends at a glance.
 
 ## How It Works
