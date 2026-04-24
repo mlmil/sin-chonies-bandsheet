@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sin Chonies — The Band Sheet</title>
+    <style>
+        /* Bold & Edgy Theme – high contrast, neon accents */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #000000;
+            --card: #111111;
+            --border: #ff6a00; /* neon orange */
+            --text: #e9e9e9;
+            --accent: #00eaff; /* cyan */
+            --accent-2: #ff6a00;
+        }
+        body {
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto 80px auto;
+            background: #141414;
+            padding: 40px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            box-shadow:
+                0 0 40px rgba(0,0,0,0.6),
+                0 0 120px rgba(0, 230, 255, 0.15);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 36px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--border);
+        }
+        .banner-img { max-width: 100%; height: auto; margin-bottom: 16px; border-radius: 4px; }
+        .title {
+            font-size: 30px;
+            font-weight: 900;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 6px;
+            text-shadow: 0 0 6px rgba(0, 238, 255, 0.8);
+        }
+        .tagline {
+            font-size: 14px;
+            color: var(--accent);
+            opacity: 0.85;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        .updated { font-size: 11px; color: #666; margin-top: 12px; }
+        .section { margin: 32px 0; }
+        .section-title {
+            font-size: 17px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 238, 255, 0.35);
+        }
+        .divider { border: none; border-top: 1px solid #2a2a2a; margin: 32px 0; }
+        .entry { margin: 6px 0; padding: 6px 0 6px 12px; border-left: 3px solid transparent; transition: border-color 0.2s; }
+        .entry:hover { border-left-color: rgba(0, 238, 255, 0.4); }
+        .this-week-entry { color: var(--accent); font-weight: 700; font-size: 15px; }
+        .gig { color: #f5c842; }
+        .member-out { color: #ff6b6b; }
+        .weekend { color: #d4d4d4; }
+        .none { color: #777; font-style: italic; }
+        .month-header { color: var(--accent); font-size: 12px; font-weight: bold; letter-spacing: 2px; margin: 18px 0 6px 0; padding-bottom: 4px; border-bottom: 1px solid rgba(0,238,255,.25); }
+        .footer { text-align: center; margin-top: 48px; padding-top: 24px; border-top: 1px solid #2a2a2a; color: #555; font-size: 11px; line-height: 2; }
+        .footer a { color: var(--accent); text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .footer .location { letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-size: 12px; margin-bottom: 4px; }
+        @media (max-width: 640px) {
+            .container { padding: 20px; }
+            .title { font-size: 22px; letter-spacing: 1px; }
+            .section-title { font-size: 14px; }
+            .entry { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="banner-img" src="2025 Digital Banner w_qr and logo 16x9.png" alt="Sin Chonies banner" />
+            <div class="title">🎸 Sin Chonies — The Band Sheet</div>
+            <div class="tagline">…and you can too.</div>
+            <div class="updated" id="updated"><span class="loading">Loading…</span></div>
+        </div>
+        <div class="section"><div class="section-title">⚡ This Week</div><div id="this-week"><span class="loading">Loading…</span></div></div>
+        <hr class="divider" />
+        <div class="section"><div class="section-title">📅 Booked Gigs</div><div id="booked-gigs"><span class="loading">Loading…</span></div></div>
+        <hr class="divider" />
+        <div class="section"><div class="section-title">🚫 Members Out</div><div id="members-out"><span class="loading">Loading…</span></div></div>
+        <hr class="divider" />
+        <div class="section"><div class="section-title">🟢 Weekend Days Open</div><div id="free-weekends"><span class="loading">Loading…</span></div></div>
+        <div class="footer">
+            <div class="location">Ventura, CA</div>
+            <p>Questions? Hit up the group chat.</p>
+            <p style="margin-top:8px;"><a href="https://www.instagram.com/sinchonies/" target="_blank">📸 @sinchonies</a></p>
+            <p style="margin-top:12px; color:#444;">Last refreshed: <span id="last-refreshed">—</span></p>
+        </div>
+    </div>
+    <script>
+    (function(){
+        function el(id){return document.getElementById(id);}    
+        function addEntries(containerId, entries, cssClass){
+            const c = el(containerId); c.innerHTML = '';
+            if(!entries || entries.length===0){ const d=document.createElement('div'); d.className='entry none'; d.textContent='(None scheduled)'; c.appendChild(d); return; }
+            entries.forEach(t => { const d=document.createElement('div'); d.className='entry '+cssClass; d.textContent=t; c.appendChild(d); });
+        }
+        function addWeekendsByMonth(containerId, entries){ const c = el(containerId); c.innerHTML=''; if(!entries||entries.length===0){ const d=document.createElement('div'); d.className='entry none'; d.textContent='(None — we\'re booked solid!)'; c.appendChild(d); return; } let currentMonth=null; entries.forEach(text=>{ const cleaned = text.replace(/^-\s*/,''); const parts = cleaned.split(' '); const month = parts[1] || ''; if(month && month !== currentMonth){ currentMonth = month; const h=document.createElement('div'); h.className='month-header'; h.textContent=month.toUpperCase(); c.appendChild(h); } const d=document.createElement('div'); d.className='entry weekend'; d.textContent=text; c.appendChild(d); }); }
+        fetch('bandsheet-data.json?v=' + Date.now())
+            .then(r => r.json())
+            .then(data => {
+                el('updated').textContent = 'Updated: ' + data.updated;
+                el('last-refreshed').textContent = data.updated;
+                addEntries('this-week', data.this_week, 'this-week-entry');
+                addEntries('booked-gigs', data.booked_gigs, 'gig');
+                addEntries('members-out', data.members_out, 'member-out');
+                addWeekendsByMonth('free-weekends', data.free_weekends);
+            })
+            .catch(err => {
+                console.error('Band sheet load error:', err);
+                el('updated').textContent = '';
+                ['this-week','booked-gigs','members-out','free-weekends'].forEach(id => {
+                    const c = el(id); c.innerHTML = ''; const d=document.createElement('div'); d.className='entry none'; d.textContent='Error loading data — try refreshing.'; c.appendChild(d);
+                });
+            });
+    })();
+    </script>
+</body>
+</html>
