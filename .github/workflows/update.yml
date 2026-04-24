@@ -1,0 +1,33 @@
+name: Update Sin Chonies Band Sheet
+
+on:
+  schedule:
+    - cron: '0 15 * * *'   # 7 AM Pacific (UTC-8) / 8 AM PDT (UTC-7) every day
+  workflow_dispatch:        # manual "Run workflow" button
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate band sheet JSON
+        env:
+          BAND_ICAL_URL: ${{ secrets.BAND_ICAL_URL }}
+        run: python generate_bandsheet.py
+
+      - name: Commit & push updated data
+        run: |
+          git config user.name  'SinChoniesBot'
+          git config user.email 'bot@sinchonies.band'
+          git add bandsheet-data.json
+          git diff --cached --quiet || git commit -m "🎸 Auto-sync band sheet $(date -u +%Y-%m-%d)"
+          git push
