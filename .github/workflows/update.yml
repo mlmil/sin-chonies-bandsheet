@@ -30,4 +30,4 @@ jobs:
           git config user.email 'bot@sinchonies.band'
           git add bandsheet-data.json
           git diff --cached --quiet || git commit -m "🎸 Auto-sync band sheet $(date -u +%Y-%m-%d)"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
