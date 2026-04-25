@@ -132,7 +132,15 @@ def main():
     end_date = now + timedelta(days=LOOK_AHEAD_DAYS)
 
     print(f"Fetching Sin Chonies calendar events ({today} → {end_date.date()})…")
-    all_events = events(url=PUBLIC_ICAL_URL, start=start_date, end=end_date)
+    try:
+        all_events = events(url=PUBLIC_ICAL_URL, start=start_date, end=end_date)
+    except ValueError as e:
+        print(f"ERROR: Failed to parse iCal content: {e}")
+        print(f"       URL: {PUBLIC_ICAL_URL}")
+        print(f"       The calendar URL may be temporarily broken or returning invalid content.")
+        print(f"       Check the calendar sharing settings and verify the URL is correct.")
+        raise SystemExit(1)
+
     print(f"  ↳ {len(all_events)} raw events fetched.")
 
     # ── Classify events ──────────────────────────────────────────────────────
