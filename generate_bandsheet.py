@@ -18,9 +18,11 @@ from icalevents.icalevents import events
 # Public iCal URL for Sin Chonies calendar.
 # Can be overridden via BAND_ICAL_URL environment variable.
 DEFAULT_ICAL_URL = "https://calendar.google.com/calendar/ical/4fa4b7d105b67016c021fb6f7feddaffde40f5b734d900a90b2737f4027b3dc9%40group.calendar.google.com/public/basic.ics"
-PUBLIC_ICAL_URL = os.getenv("BAND_ICAL_URL", DEFAULT_ICAL_URL)
+PUBLIC_ICAL_URL = os.getenv("BAND_ICAL_URL") or DEFAULT_ICAL_URL
 TIMEZONE = "America/Los_Angeles"
 LOOK_AHEAD_DAYS = 180
+# Note: If BAND_ICAL_URL env var is empty/missing, falls back to DEFAULT_ICAL_URL (public calendar)
+# If BAND_ICAL_URL is set to a non-empty secret URL, uses that instead
 # -----------------------------------------------------------------------------
 
 TZ = ZoneInfo(TIMEZONE)
