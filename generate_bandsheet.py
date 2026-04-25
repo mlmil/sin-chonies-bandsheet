@@ -7,6 +7,7 @@ for the static HTML page to consume.
 import json
 import os
 import time
+import urllib.request
 from datetime import datetime, timedelta, date
 from zoneinfo import ZoneInfo
 from typing import Optional
@@ -138,6 +139,17 @@ def main():
     max_retries = 3
     for attempt in range(1, max_retries + 1):
         try:
+            # First, fetch the raw content to validate before parsing
+            req = urllib.request.Request(PUBLIC_ICAL_URL)
+            req.add_header('User-Agent', 'Sin-Chonies-Band-Sheet/1.0')
+            with urllib.request.urlopen(req, timeout=10) as response:
+                content = response.read()
+                content_size = len(content)
+                content_lines = content.decode('utf-8').split('\n')
+                has_vevent = any('BEGIN:VEVENT' in line for line in content_lines)
+                print(f"   Downloaded {content_size} bytes, {len(content_lines)} lines, VEVENT blocks: {has_vevent}")
+
+            # Now parse with icalevents
             all_events = events(url=PUBLIC_ICAL_URL, start=start_date, end=end_date)
             break  # Success, exit retry loop
         except (ValueError, Exception) as e:
