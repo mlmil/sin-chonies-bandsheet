@@ -6,6 +6,8 @@ for the static HTML page to consume.
 """
 import json
 import os
+import time
+import urllib.request
 from datetime import datetime, timedelta, date
 from zoneinfo import ZoneInfo
 from typing import Optional
@@ -16,9 +18,11 @@ from icalevents.icalevents import events
 # Public iCal URL for Sin Chonies calendar.
 # Can be overridden via BAND_ICAL_URL environment variable.
 DEFAULT_ICAL_URL = "https://calendar.google.com/calendar/ical/4fa4b7d105b67016c021fb6f7feddaffde40f5b734d900a90b2737f4027b3dc9%40group.calendar.google.com/public/basic.ics"
-PUBLIC_ICAL_URL = os.getenv("BAND_ICAL_URL", DEFAULT_ICAL_URL)
+PUBLIC_ICAL_URL = os.getenv("BAND_ICAL_URL") or DEFAULT_ICAL_URL
 TIMEZONE = "America/Los_Angeles"
 LOOK_AHEAD_DAYS = 180
+# Note: If BAND_ICAL_URL env var is empty/missing, falls back to DEFAULT_ICAL_URL (public calendar)
+# If BAND_ICAL_URL is set to a non-empty secret URL, uses that instead
 # -----------------------------------------------------------------------------
 
 TZ = ZoneInfo(TIMEZONE)
@@ -132,7 +136,42 @@ def main():
     end_date = now + timedelta(days=LOOK_AHEAD_DAYS)
 
     print(f"Fetching Sin Chonies calendar events ({today} → {end_date.date()})…")
-    all_events = events(url=PUBLIC_ICAL_URL, start=start_date, end=end_date)
+
+    # Retry up to 3 times with exponential backoff for transient network/parsing errors
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        try:
+            # First, fetch the raw content to validate before parsing
+            req = urllib.request.Request(PUBLIC_ICAL_URL)
+            req.add_header('User-Agent', 'Sin-Chonies-Band-Sheet/1.0')
+            with urllib.request.urlopen(req, timeout=10) as response:
+                content = response.read()
+                content_size = len(content)
+                content_lines = content.decode('utf-8').split('\n')
+                has_vevent = any('BEGIN:VEVENT' in line for line in content_lines)
+                print(f"   Downloaded {content_size} bytes, {len(content_lines)} lines, VEVENT blocks: {has_vevent}")
+
+            # Now parse with icalevents
+            all_events = events(url=PUBLIC_ICAL_URL, start=start_date, end=end_date)
+            break  # Success, exit retry loop
+        except (ValueError, Exception) as e:
+            if attempt < max_retries:
+                wait_time = 2 ** (attempt - 1)  # 1s, 2s, 4s backoff
+                print(f"⚠️  Attempt {attempt} failed: {type(e).__name__}: {e}")
+                print(f"   Retrying in {wait_time}s...")
+                time.sleep(wait_time)
+            else:
+                # Final attempt failed
+                print(f"❌ ERROR: Failed to fetch/parse calendar after {max_retries} attempts")
+                print(f"   Last error: {e}")
+                print(f"   URL: {PUBLIC_ICAL_URL}")
+                print(f"   Possible causes:")
+                print(f"   - Calendar sharing settings (check calendar is public)")
+                print(f"   - Google temporarily blocking the request")
+                print(f"   - Network connectivity issue in GitHub Actions")
+                print(f"   - Invalid iCal content from Google Calendar")
+                raise SystemExit(1)
+
     print(f"  ↳ {len(all_events)} raw events fetched.")
 
     # ── Classify events ──────────────────────────────────────────────────────
