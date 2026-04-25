@@ -5,6 +5,9 @@ on:
     - cron: '0 15 * * *'   # 7 AM Pacific (UTC-8) / 8 AM PDT (UTC-7) every day
   workflow_dispatch:        # manual "Run workflow" button
 
+permissions:
+  contents: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
