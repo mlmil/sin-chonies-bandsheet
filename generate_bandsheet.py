@@ -6,6 +6,7 @@ for the static HTML page to consume.
 """
 import json
 import os
+import time
 from datetime import datetime, timedelta, date
 from zoneinfo import ZoneInfo
 from typing import Optional
@@ -132,14 +133,30 @@ def main():
     end_date = now + timedelta(days=LOOK_AHEAD_DAYS)
 
     print(f"Fetching Sin Chonies calendar events ({today} → {end_date.date()})…")
-    try:
-        all_events = events(url=PUBLIC_ICAL_URL, start=start_date, end=end_date)
-    except ValueError as e:
-        print(f"ERROR: Failed to parse iCal content: {e}")
-        print(f"       URL: {PUBLIC_ICAL_URL}")
-        print(f"       The calendar URL may be temporarily broken or returning invalid content.")
-        print(f"       Check the calendar sharing settings and verify the URL is correct.")
-        raise SystemExit(1)
+
+    # Retry up to 3 times with exponential backoff for transient network/parsing errors
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        try:
+            all_events = events(url=PUBLIC_ICAL_URL, start=start_date, end=end_date)
+            break  # Success, exit retry loop
+        except (ValueError, Exception) as e:
+            if attempt < max_retries:
+                wait_time = 2 ** (attempt - 1)  # 1s, 2s, 4s backoff
+                print(f"⚠️  Attempt {attempt} failed: {type(e).__name__}: {e}")
+                print(f"   Retrying in {wait_time}s...")
+                time.sleep(wait_time)
+            else:
+                # Final attempt failed
+                print(f"❌ ERROR: Failed to fetch/parse calendar after {max_retries} attempts")
+                print(f"   Last error: {e}")
+                print(f"   URL: {PUBLIC_ICAL_URL}")
+                print(f"   Possible causes:")
+                print(f"   - Calendar sharing settings (check calendar is public)")
+                print(f"   - Google temporarily blocking the request")
+                print(f"   - Network connectivity issue in GitHub Actions")
+                print(f"   - Invalid iCal content from Google Calendar")
+                raise SystemExit(1)
 
     print(f"  ↳ {len(all_events)} raw events fetched.")
 
