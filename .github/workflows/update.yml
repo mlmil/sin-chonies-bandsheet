@@ -5,6 +5,9 @@ on:
     - cron: '0 15 * * *'   # 7 AM Pacific (UTC-8) / 8 AM PDT (UTC-7) every day
   workflow_dispatch:        # manual "Run workflow" button
 
+permissions:
+  contents: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -30,4 +33,4 @@ jobs:
           git config user.email 'bot@sinchonies.band'
           git add bandsheet-data.json
           git diff --cached --quiet || git commit -m "🎸 Auto-sync band sheet $(date -u +%Y-%m-%d)"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push
