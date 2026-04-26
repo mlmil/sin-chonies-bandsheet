@@ -1,6 +1,9 @@
 {
-  "updated": "April 25, 2026 @ 02:26 PM",
-  "this_week": [],
+  "updated": "April 26, 2026 @ 07:46 AM",
+  "this_week": [
+    "SAT 5-2-26 @10PM \u2014 The Sewer, Ventura",
+    "SUN 5-3-26 @3PM \u2014 Winchester's, Ventura"
+  ],
   "booked_gigs": [
     "SAT 5-2-26 @10PM \u2014 The Sewer, Ventura",
     "SUN 5-3-26 @3PM \u2014 Winchester's, Ventura",
@@ -16,7 +19,6 @@
   ],
   "members_out": [],
   "free_weekends": [
-    "- SAT April 25",
     "- FRI May 01",
     "- SAT May 09",
     "- FRI May 15",
@@ -58,6 +60,7 @@
     "- FRI October 09",
     "- SAT October 10",
     "- FRI October 16",
-    "- SAT October 17"
+    "- SAT October 17",
+    "- FRI October 23"
   ]
 }
