@@ -1,12 +1,10 @@
 {
-  "updated": "May 03, 2026 @ 08:47 AM",
+  "updated": "May 04, 2026 @ 09:45 AM",
   "this_week": [
-    "SUN 5-3-26 @3PM \u2014 Winchester's, Ventura",
     "TUE 5-5-26 @8PM \u2014 The Shores, Oxnard",
     "FRI 5-8-26 @6PM \u2014 Bombay, Ventura"
   ],
   "booked_gigs": [
-    "SUN 5-3-26 @3PM \u2014 Winchester's, Ventura",
     "TUE 5-5-26 @8PM \u2014 The Shores, Oxnard",
     "FRI 5-8-26 @6PM \u2014 Bombay, Ventura",
     "SAT 5-23-26 @8:30PM \u2014 Garage, Ventura",
@@ -62,6 +60,7 @@
     "- SAT October 17",
     "- FRI October 23",
     "- SAT October 24",
-    "- FRI October 30"
+    "- FRI October 30",
+    "- SAT October 31"
   ]
 }
