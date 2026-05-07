@@ -58,6 +58,35 @@
             letter-spacing: 1px;
         }
         .updated { font-size: 11px; color: #666; margin-top: 12px; }
+        .next-gig-banner {
+            display: block;
+            border: 6px solid var(--accent-2);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-top: 20px;
+            background: rgba(255, 106, 0, 0.1);
+            box-shadow: 0 0 60px rgba(255, 106, 0, 0.5), inset 0 0 30px rgba(255, 106, 0, 0.08);
+            width: 100%;
+            text-align: center;
+        }
+        .next-gig-label {
+            font-size: 64px;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: var(--accent-2);
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 106, 0, 1), 0 0 40px rgba(255, 106, 0, 0.6);
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        .next-gig-text {
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--text);
+            letter-spacing: 2px;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
         .section { margin: 32px 0; }
         .section-title {
             font-size: 17px;
@@ -92,10 +121,14 @@
 <body>
     <div class="container">
         <div class="header">
-            <img class="banner-img" src="2025 Digital Banner w_qr and logo 16x9.png" alt="Sin Chonies banner" />
             <div class="title">🎸 Sin Chonies — The Band Sheet</div>
+            <img class="banner-img" src="2025 Digital Banner w_qr and logo 16x9.png" alt="Sin Chonies banner" />
             <div class="tagline">…and you can too.</div>
             <div class="updated" id="updated"><span class="loading">Loading…</span></div>
+            <div class="next-gig-banner" id="next-gig-banner" style="display:none;">
+                <div class="next-gig-label">⚡ Next Gig</div>
+                <div class="next-gig-text" id="next-gig-text"></div>
+            </div>
         </div>
         <div class="section"><div class="section-title">⚡ This Week</div><div id="this-week"><span class="loading">Loading…</span></div></div>
         <hr class="divider" />
@@ -120,6 +153,15 @@
             entries.forEach(t => { const d=document.createElement('div'); d.className='entry '+cssClass; d.textContent=t; c.appendChild(d); });
         }
         function addWeekendsByMonth(containerId, entries){ const c = el(containerId); c.innerHTML=''; if(!entries||entries.length===0){ const d=document.createElement('div'); d.className='entry none'; d.textContent='(None — we\'re booked solid!)'; c.appendChild(d); return; } let currentMonth=null; entries.forEach(text=>{ const cleaned = text.replace(/^-\s*/,''); const parts = cleaned.split(' '); const month = parts[1] || ''; if(month && month !== currentMonth){ currentMonth = month; const h=document.createElement('div'); h.className='month-header'; h.textContent=month.toUpperCase(); c.appendChild(h); } const d=document.createElement('div'); d.className='entry weekend'; d.textContent=text; c.appendChild(d); }); }
+        function parseGigDate(gigStr) {
+            const match = gigStr.match(/(\d{1,2})-(\d{1,2})-(\d{2})/);
+            if (!match) return null;
+            return new Date(2000 + parseInt(match[3], 10), parseInt(match[1], 10) - 1, parseInt(match[2], 10));
+        }
+        function findNextGig(gigs) {
+            const today = new Date(); today.setHours(0,0,0,0);
+            return gigs.find(g => { const d = parseGigDate(g); return d && d >= today; }) || null;
+        }
         fetch('bandsheet-data.json?v=' + Date.now())
             .then(r => r.json())
             .then(data => {
@@ -129,6 +171,13 @@
                 addEntries('booked-gigs', data.booked_gigs, 'gig');
                 addEntries('members-out', data.members_out, 'member-out');
                 addWeekendsByMonth('free-weekends', data.free_weekends);
+                const next = findNextGig(data.booked_gigs || []);
+                if (next) {
+                    const parts = next.split(/\s*—\s*/);
+                    const lines = parts.length >= 2 ? [parts[0].trim(), parts[1].trim()] : [next];
+                    el('next-gig-text').innerHTML = lines.map(l => `<span style="display:block;">${l}</span>`).join('');
+                    el('next-gig-banner').style.display = 'block';
+                }
             })
             .catch(err => {
                 console.error('Band sheet load error:', err);
