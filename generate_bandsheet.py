@@ -20,7 +20,7 @@ from icalevents.icalevents import events
 DEFAULT_ICAL_URL = "https://calendar.google.com/calendar/ical/4fa4b7d105b67016c021fb6f7feddaffde40f5b734d900a90b2737f4027b3dc9%40group.calendar.google.com/public/basic.ics"
 PUBLIC_ICAL_URL = os.getenv("BAND_ICAL_URL") or DEFAULT_ICAL_URL
 TIMEZONE = "America/Los_Angeles"
-LOOK_AHEAD_DAYS = 180
+LOOK_AHEAD_DAYS = 365
 # Note: If BAND_ICAL_URL env var is empty/missing, falls back to DEFAULT_ICAL_URL (public calendar)
 # If BAND_ICAL_URL is set to a non-empty secret URL, uses that instead
 # -----------------------------------------------------------------------------
