@@ -6,3 +6,12 @@ __pycache__/
 .DS_Store
 .bg-shell/
 *.webloc
+client_secret.json
+token.json
+sin_chonies_credentials.json
+sin_chonies_check_token.json
+.env
+CREDS/
+daily_report.txt
+*.zip
+cinchones-api-key.md
