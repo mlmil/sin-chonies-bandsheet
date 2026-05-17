@@ -1,6 +1,9 @@
 {
-  "updated": "May 16, 2026 @ 08:58 AM",
-  "this_week": [],
+  "updated": "May 17, 2026 @ 08:59 AM",
+  "this_week": [
+    "FRI 5-22-26 @6PM \u2014 Leashless, Ventura",
+    "SAT 5-23-26 @8:30PM \u2014 Garage, Ventura"
+  ],
   "booked_gigs": [
     "FRI 5-22-26 @6PM \u2014 Leashless, Ventura",
     "SAT 5-23-26 @8:30PM \u2014 Garage, Ventura",
@@ -19,7 +22,6 @@
   ],
   "members_out": [],
   "free_weekends": [
-    "- SAT May 16",
     "- FRI May 29",
     "- SAT May 30",
     "- FRI June 05",
