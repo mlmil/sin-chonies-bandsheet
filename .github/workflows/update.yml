@@ -23,8 +23,6 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate band sheet JSON
-        env:
-          BAND_ICAL_URL: ${{ secrets.BAND_ICAL_URL }}
         run: python generate_bandsheet.py
 
       - name: Commit & push updated data
