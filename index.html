@@ -137,6 +137,7 @@
         <div class="section"><div class="section-title">🚫 Members Out</div><div id="members-out"><span class="loading">Loading…</span></div></div>
         <hr class="divider" />
         <div class="section"><div class="section-title">🟢 Weekend Days Open</div><div id="free-weekends"><span class="loading">Loading…</span></div></div>
+        <div class="section" id="cross-band-section" style="display:none"><div class="section-title">Cross-band conflicts</div><div id="cross-band-conflicts"></div></div>
         <div class="footer">
             <div class="location">Ventura, CA</div>
             <p>Questions? Hit up the group chat.</p>
@@ -170,6 +171,7 @@
                 addEntries('this-week', data.this_week, 'this-week-entry');
                 addEntries('booked-gigs', data.booked_gigs, 'gig');
                 addEntries('members-out', data.members_out, 'member-out');
+                if (data.cross_band_conflicts && data.cross_band_conflicts.length) { el('cross-band-section').style.display = 'block'; addEntries('cross-band-conflicts', data.cross_band_conflicts, 'member-out'); }
                 addWeekendsByMonth('free-weekends', data.free_weekends);
                 const next = findNextGig(data.booked_gigs || []);
                 if (next) {
@@ -190,3 +192,4 @@
     </script>
 </body>
 </html>
+
