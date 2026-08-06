@@ -21,6 +21,7 @@ DEFAULT_ICAL_URL = "https://calendar.google.com/calendar/ical/4fa4b7d105b67016c0
 PUBLIC_ICAL_URL = os.getenv("BAND_ICAL_URL") or DEFAULT_ICAL_URL
 TIMEZONE = "America/Los_Angeles"
 LOOK_AHEAD_DAYS = 365
+NEON_BLONDE_ICAL_URL = os.getenv("NEON_BLONDE_ICAL_URL", "https://calendar.google.com/calendar/ical/neonblondevc%40gmail.com/public/basic.ics")
 # Note: If BAND_ICAL_URL env var is empty/missing, falls back to DEFAULT_ICAL_URL (public calendar)
 # If BAND_ICAL_URL is set to a non-empty secret URL, uses that instead
 # -----------------------------------------------------------------------------
@@ -127,6 +128,20 @@ def is_weekend(d: date) -> bool:
     return d.weekday() in (4, 5)  # Friday = 4, Saturday = 5
 
 
+def fetch_cross_band_conflicts(sin_gigs, start_date, end_date):
+    """Return Neon Blonde events sharing a date with a Sin Chonies gig."""
+    neon_events = events(url=NEON_BLONDE_ICAL_URL, start=start_date, end=end_date)
+    sin_dates = {g["date"] for g in sin_gigs}
+    conflicts = []
+    for event in neon_events:
+        event_date_value = event_date(event.start)
+        if event_date_value not in sin_dates:
+            continue
+        title = (event.summary or "Neon Blonde booking").strip()
+        conflicts.append(f"{event_date_value.strftime('%a %m-%d-%Y').upper()} — Neon Blonde: {title}")
+    return sorted(set(conflicts))
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
@@ -218,6 +233,9 @@ def main():
                 )
 
     gigs.sort(key=lambda g: g["date"])
+    cross_band_conflicts = fetch_cross_band_conflicts(gigs, start_date, end_date)
+    for conflict in cross_band_conflicts:
+        print(f"::warning title=Cross-band booking conflict::{conflict}")
 
     # Debug: preview gigs to verify dates are parsed
     try:
@@ -282,6 +300,7 @@ def main():
         "booked_gigs": booked_gigs,
         "members_out": members_out_lines,
         "free_weekends": free_weekends,
+        "cross_band_conflicts": cross_band_conflicts,
     }
 
     out_path = os.path.join(os.path.dirname(__file__) or ".", "bandsheet-data.json")
@@ -295,3 +314,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
