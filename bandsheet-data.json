@@ -1,5 +1,5 @@
 {
-  "updated": "August 06, 2026 @ 07:16 AM",
+  "updated": "August 07, 2026 @ 07:17 AM",
   "this_week": [],
   "booked_gigs": [
     "FRI 8-21-26 @9PM \u2014 The Cruisery, Santa Barbara",
@@ -109,6 +109,14 @@
     "- SAT July 24",
     "- FRI July 30",
     "- SAT July 31",
-    "- FRI August 06"
+    "- FRI August 06",
+    "- SAT August 07"
+  ],
+  "cross_band_conflicts": [
+    "FRI 08-21-2026 \u2014 Neon Blonde: Kyle Out",
+    "SAT 09-12-2026 \u2014 Neon Blonde: Fox Wine Company",
+    "SAT 09-26-2026 \u2014 Neon Blonde: Alfred Out",
+    "SAT 09-26-2026 \u2014 Neon Blonde: Kyle OUT",
+    "SAT 10-10-2026 \u2014 Neon Blonde: BABALOO"
   ]
 }
