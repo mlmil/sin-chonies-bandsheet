@@ -1,10 +1,9 @@
 {
-  "updated": "August 10, 2026 @ 08:58 AM",
+  "updated": "August 11, 2026 @ 07:16 AM",
   "this_week": [],
   "booked_gigs": [
     "FRI 8-21-26 @9PM \u2014 The Cruisery, Santa Barbara",
     "SAT 8-22-26 @9PM \u2014 The Shores, Oxnard",
-    "SAT 9-12-26 @8:30PM \u2014 Azar's, Newbury Park",
     "SAT 9-26-26 @8:30PM \u2014 Garage, Ventura",
     "SAT 10-10-26 \u2014 TBA",
     "SAT 12-26-26 @9PM \u2014 The Shores, Oxnard"
@@ -18,6 +17,7 @@
     "- FRI September 04",
     "- SAT September 05",
     "- FRI September 11",
+    "- SAT September 12",
     "- FRI September 18",
     "- SAT September 19",
     "- FRI September 25",
@@ -112,7 +112,6 @@
   ],
   "cross_band_conflicts": [
     "FRI 08-21-2026 \u2014 Neon Blonde: Kyle Out",
-    "SAT 09-12-2026 \u2014 Neon Blonde: Fox Wine Company",
     "SAT 09-26-2026 \u2014 Neon Blonde: Alfred Out",
     "SAT 09-26-2026 \u2014 Neon Blonde: Kyle OUT",
     "SAT 10-10-2026 \u2014 Neon Blonde: BABALOO"
