@@ -1,6 +1,9 @@
 {
-  "updated": "August 15, 2026 @ 08:18 AM",
-  "this_week": [],
+  "updated": "August 16, 2026 @ 07:17 AM",
+  "this_week": [
+    "FRI 8-21-26 @9PM \u2014 The Cruisery, Santa Barbara",
+    "SAT 8-22-26 @9PM \u2014 The Shores, Oxnard"
+  ],
   "booked_gigs": [
     "FRI 8-21-26 @9PM \u2014 The Cruisery, Santa Barbara",
     "SAT 8-22-26 @9PM \u2014 The Shores, Oxnard",
@@ -10,7 +13,6 @@
   ],
   "members_out": [],
   "free_weekends": [
-    "- SAT August 15",
     "- FRI August 28",
     "- SAT August 29",
     "- FRI September 04",
