@@ -1,11 +1,7 @@
 {
-  "updated": "August 22, 2026 @ 08:19 AM",
-  "this_week": [
-    "SAT 8-22-26 @9PM \u2014 The Shores, Oxnard"
-  ],
+  "updated": "August 23, 2026 @ 07:18 AM",
+  "this_week": [],
   "booked_gigs": [
-    "SAT 8-22-26 @9PM \u2014 The Shores, Oxnard",
-    "SAT 9-26-26 @8:30PM \u2014 Garage, Ventura",
     "SAT 10-10-26 \u2014 TBA",
     "SAT 12-26-26 @9PM \u2014 The Shores, Oxnard"
   ],
@@ -20,6 +16,7 @@
     "- FRI September 18",
     "- SAT September 19",
     "- FRI September 25",
+    "- SAT September 26",
     "- FRI October 02",
     "- SAT October 03",
     "- FRI October 09",
@@ -114,8 +111,6 @@
     "- SAT August 21"
   ],
   "cross_band_conflicts": [
-    "SAT 09-26-2026 \u2014 Neon Blonde: Alfred Out",
-    "SAT 09-26-2026 \u2014 Neon Blonde: Kyle OUT",
     "SAT 10-10-2026 \u2014 Neon Blonde: BABALOO"
   ]
 }
