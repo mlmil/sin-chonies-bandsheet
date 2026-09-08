@@ -1,10 +1,7 @@
 {
-  "updated": "September 07, 2026 @ 12:00 PM",
-  "this_week": [
-    "MON 9-7-26 \u2014 TBA"
-  ],
+  "updated": "September 08, 2026 @ 07:16 AM",
+  "this_week": [],
   "booked_gigs": [
-    "MON 9-7-26 \u2014 TBA",
     "FRI 9-18-26 \u2014 TBA",
     "THU 9-24-26 \u2014 TBA",
     "MON 9-28-26 \u2014 TBA",
@@ -116,7 +113,5 @@
     "- FRI September 03",
     "- SAT September 04"
   ],
-  "cross_band_conflicts": [
-    "FRI 09-18-2026 \u2014 Neon Blonde: Curtis Out"
-  ]
+  "cross_band_conflicts": []
 }
