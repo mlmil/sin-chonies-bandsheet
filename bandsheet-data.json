@@ -1,11 +1,12 @@
 {
-  "updated": "September 17, 2026 @ 11:49 AM",
+  "updated": "September 18, 2026 @ 07:16 AM",
   "this_week": [
     "FRI 9-18-26 \u2014 TBA"
   ],
   "booked_gigs": [
     "FRI 9-18-26 \u2014 TBA",
     "THU 9-24-26 \u2014 TBA",
+    "SUN 9-27-26 \u2014 TBA",
     "MON 9-28-26 \u2014 TBA",
     "SAT 10-10-26 \u2014 TBA",
     "FRI 10-16-26 \u2014 TBA",
@@ -114,7 +115,10 @@
     "- SAT September 04",
     "- FRI September 10",
     "- SAT September 11",
-    "- FRI September 17"
+    "- FRI September 17",
+    "- SAT September 18"
   ],
-  "cross_band_conflicts": []
+  "cross_band_conflicts": [
+    "SAT 11-21-2026 \u2014 Neon Blonde: Ms Special Santa Barbara"
+  ]
 }
