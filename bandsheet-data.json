@@ -1,12 +1,14 @@
 {
-  "updated": "September 27, 2026 @ 11:54 AM",
+  "updated": "September 28, 2026 @ 07:16 AM",
   "this_week": [
     "MON 9-28-26 \u2014 TBA",
-    "THU 10-1-26 \u2014 TBA"
+    "THU 10-1-26 \u2014 TBA",
+    "SUN 10-4-26 \u2014 TBA"
   ],
   "booked_gigs": [
     "MON 9-28-26 \u2014 TBA",
     "THU 10-1-26 \u2014 TBA",
+    "SUN 10-4-26 \u2014 TBA",
     "SAT 10-10-26 \u2014 TBA",
     "FRI 10-16-26 \u2014 TBA",
     "SUN 10-18-26 \u2014 TBA",
@@ -119,6 +121,7 @@
   ],
   "cross_band_conflicts": [
     "FRI 10-16-2026 \u2014 Neon Blonde: Fox Wine Company",
-    "SAT 11-21-2026 \u2014 Neon Blonde: Ms Special Santa Barbara"
+    "SAT 11-21-2026 \u2014 Neon Blonde: Ms Special Santa Barbara",
+    "SUN 10-04-2026 \u2014 Neon Blonde: Kyle OUT"
   ]
 }
