@@ -1,5 +1,9 @@
 {
+<<<<<<< Updated upstream
   "updated": "September 30, 2026 @ 12:51 PM",
+=======
+  "updated": "October 01, 2026 @ 07:17 AM",
+>>>>>>> Stashed changes
   "this_week": [
     "THU 10-1-26 \u2014 TBA",
     "SUN 10-4-26 \u2014 TBA"
@@ -115,7 +119,8 @@
     "- FRI September 17",
     "- SAT September 18",
     "- FRI September 24",
-    "- SAT September 25"
+    "- SAT September 25",
+    "- FRI October 01"
   ],
   "cross_band_conflicts": [
     "FRI 10-16-2026 \u2014 Neon Blonde: Fox Wine Company",
