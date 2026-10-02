@@ -1,11 +1,9 @@
 {
-  "updated": "October 01, 2026 @ 01:08 PM",
+  "updated": "October 02, 2026 @ 07:18 AM",
   "this_week": [
-    "THU 10-1-26 \u2014 TBA",
     "SUN 10-4-26 \u2014 TBA"
   ],
   "booked_gigs": [
-    "THU 10-1-26 \u2014 TBA",
     "SUN 10-4-26 \u2014 TBA",
     "SAT 10-10-26 \u2014 TBA",
     "FRI 10-16-26 \u2014 TBA",
@@ -116,7 +114,8 @@
     "- SAT September 18",
     "- FRI September 24",
     "- SAT September 25",
-    "- FRI October 01"
+    "- FRI October 01",
+    "- SAT October 02"
   ],
   "cross_band_conflicts": [
     "FRI 10-16-2026 \u2014 Neon Blonde: Fox Wine Company",
