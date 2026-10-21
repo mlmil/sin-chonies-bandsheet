@@ -1,18 +1,13 @@
 {
-  "updated": "October 20, 2026 @ 11:55 AM",
+  "updated": "October 21, 2026 @ 07:17 AM",
   "this_week": [
-    "TUE 10-20-26 \u2014 TBA",
     "WED 10-21-26 \u2014 TBA",
     "THU 10-22-26 \u2014 TBA"
   ],
   "booked_gigs": [
-    "TUE 10-20-26 \u2014 TBA",
     "WED 10-21-26 \u2014 TBA",
     "THU 10-22-26 \u2014 TBA",
     "FRI 10-30-26 \u2014 TBA",
-    "SAT 11-21-26 @7PM \u2014 Winchesters, Ventura",
-    "WED 11-25-26 \u2014 TBA",
-    "SAT 11-28-26 \u2014 TBA",
     "SAT 12-26-26 @9PM \u2014 The Shores, Oxnard"
   ],
   "members_out": [],
@@ -25,7 +20,9 @@
     "- FRI November 13",
     "- SAT November 14",
     "- FRI November 20",
+    "- SAT November 21",
     "- FRI November 27",
+    "- SAT November 28",
     "- FRI December 04",
     "- SAT December 05",
     "- FRI December 11",
@@ -118,9 +115,5 @@
     "- FRI October 15",
     "- SAT October 16"
   ],
-  "cross_band_conflicts": [
-    "SAT 11-21-2026 \u2014 Neon Blonde: Ms Special",
-    "SAT 11-28-2026 \u2014 Neon Blonde: Leashless",
-    "WED 11-25-2026 \u2014 Neon Blonde: Tonys Pizza"
-  ]
+  "cross_band_conflicts": []
 }
