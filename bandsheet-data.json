@@ -1,11 +1,9 @@
 {
-  "updated": "October 21, 2026 @ 12:07 PM",
+  "updated": "October 22, 2026 @ 07:16 AM",
   "this_week": [
-    "WED 10-21-26 \u2014 TBA",
     "THU 10-22-26 \u2014 TBA"
   ],
   "booked_gigs": [
-    "WED 10-21-26 \u2014 TBA",
     "THU 10-22-26 \u2014 TBA",
     "FRI 10-30-26 \u2014 TBA",
     "SAT 12-26-26 @9PM \u2014 The Shores, Oxnard"
@@ -113,7 +111,8 @@
     "- FRI October 08",
     "- SAT October 09",
     "- FRI October 15",
-    "- SAT October 16"
+    "- SAT October 16",
+    "- FRI October 22"
   ],
   "cross_band_conflicts": []
 }
