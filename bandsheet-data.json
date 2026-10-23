@@ -1,8 +1,13 @@
 {
-  "updated": "October 23, 2026 @ 07:16 AM",
+  "updated": "October 23, 2026 @ 11:53 AM",
   "this_week": [],
   "booked_gigs": [
     "FRI 10-30-26 \u2014 TBA",
+    "FRI 11-6-26 \u2014 TBA",
+    "WED 11-11-26 \u2014 TBA",
+    "FRI 11-13-26 \u2014 TBA",
+    "FRI 11-20-26 \u2014 TBA",
+    "SAT 11-28-26 \u2014 TBA",
     "SAT 12-26-26 @9PM \u2014 The Shores, Oxnard"
   ],
   "members_out": [],
@@ -10,14 +15,10 @@
     "- FRI October 23",
     "- SAT October 24",
     "- SAT October 31",
-    "- FRI November 06",
     "- SAT November 07",
-    "- FRI November 13",
     "- SAT November 14",
-    "- FRI November 20",
     "- SAT November 21",
     "- FRI November 27",
-    "- SAT November 28",
     "- FRI December 04",
     "- SAT December 05",
     "- FRI December 11",
@@ -112,5 +113,11 @@
     "- FRI October 22",
     "- SAT October 23"
   ],
-  "cross_band_conflicts": []
+  "cross_band_conflicts": [
+    "FRI 11-06-2026 \u2014 Neon Blonde: Parquee 1055",
+    "FRI 11-13-2026 \u2014 Neon Blonde: Validation",
+    "FRI 11-20-2026 \u2014 Neon Blonde: Figueroa Mountain",
+    "SAT 11-28-2026 \u2014 Neon Blonde: Leashless",
+    "WED 11-11-2026 \u2014 Neon Blonde: SIdewalk Concert"
+  ]
 }
