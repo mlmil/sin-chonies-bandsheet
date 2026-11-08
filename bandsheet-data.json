@@ -1,6 +1,9 @@
 {
-  "updated": "November 07, 2026 @ 11:15 AM",
-  "this_week": [],
+  "updated": "November 08, 2026 @ 11:20 AM",
+  "this_week": [
+    "WED 11-11-26 \u2014 TBA",
+    "FRI 11-13-26 \u2014 TBA"
+  ],
   "booked_gigs": [
     "WED 11-11-26 \u2014 TBA",
     "FRI 11-13-26 \u2014 TBA",
@@ -10,7 +13,6 @@
   ],
   "members_out": [],
   "free_weekends": [
-    "- SAT November 07",
     "- SAT November 14",
     "- SAT November 21",
     "- FRI November 27",
